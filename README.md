@@ -15,10 +15,10 @@ Create heroku for app:
 heroku create
 Create database on MongoDB Atlas:
 
-Cluster ➡️ Collections ➡️ Create Database
+Cluster ,then Collections, then Create Database
 Change Heroku setting
 
-Config Vars ➡️ KEY: MONGODB_URI ➡️ VALUE: (from Cluster connect, change password and database name)
+Config Vars,then KEY: MONGODB_URI ➡️ VALUE: (from Cluster connect, change password and database name)
 "Git push"
 
 git push heroku main
