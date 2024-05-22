@@ -10,14 +10,10 @@ To run this app, install it locally using npm:
 After installing npm packages, the application will be invoked by using the following command:
 "npm run develop"
 
-Create heroku for app:
 
-1)  heroku create
+Heroku create:
 Create database on MongoDB Atlas: "Cluster" ,then "Collections", then "Create Database"
-Change Heroku setting:
-(Config Vars,then KEY)
-
-2)  "Git push", "git push heroku main", "heroku open"
+Change Heroku setting: "Config Vars",then KEY: "Git push", "git push heroku main", "heroku open"
 
 
 App Screenshot:
