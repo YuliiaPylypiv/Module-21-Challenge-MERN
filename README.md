@@ -12,17 +12,13 @@ After installing npm packages, the application will be invoked by using the foll
 
 Create heroku for app:
 
-heroku create
-Create database on MongoDB Atlas:
+1) heroku create
+Create database on MongoDB Atlas: "Cluster" ,then "Collections", then "Create Database"
+Change Heroku setting:
+(Config Vars,then KEY)
 
-Cluster ,then Collections, then Create Database
-Change Heroku setting
+2)"Git push", "git push heroku main", "heroku open"
 
-Config Vars,then KEY: MONGODB_URI ➡️ VALUE: (from Cluster connect, change password and database name)
-"Git push"
-
-git push heroku main
-"heroku open"
 
 App Screenshot:
 
@@ -30,5 +26,6 @@ App Screenshot:
 
 
 Deployed by HEROKU: https://book-search-mern.onrender.com/
+
 
 My GitHub: https://github.com/YuliiaPylypiv/Module-21-Challenge-MERN.git
