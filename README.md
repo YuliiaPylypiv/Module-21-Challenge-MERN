@@ -12,12 +12,12 @@ After installing npm packages, the application will be invoked by using the foll
 
 Create heroku for app:
 
-1) heroku create
+1)  heroku create
 Create database on MongoDB Atlas: "Cluster" ,then "Collections", then "Create Database"
 Change Heroku setting:
 (Config Vars,then KEY)
 
-2)"Git push", "git push heroku main", "heroku open"
+2)  "Git push", "git push heroku main", "heroku open"
 
 
 App Screenshot:
