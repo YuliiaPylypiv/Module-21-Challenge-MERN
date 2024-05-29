@@ -6,20 +6,23 @@ import {
   Card,
   Button,
 } from "react-bootstrap";
-import { GET_ME } from "../utils/queries";
+
+import { useQuery, useMutation } from "@apollo/client";
+import { QUERY_ME } from "../utils/queries";
 import { REMOVE_BOOK } from "../utils/mutations";
-import Auth from "../utils/auth";
 import { removeBookId } from "../utils/localStorage";
-import { useQuery, useMutation } from "@apollo/react-hooks";
+
+import Auth from "../utils/auth";
 
 const SavedBooks = () => {
-  const { loading, data } = useQuery(GET_ME);
-  let userData = data?.me || {};
-  console.log(userData);
-  const [removeBook] = useMutation(REMOVE_BOOK);
+  const { loading, data } = useQuery(QUERY_ME);
+  const [removeBook, { error }] = useMutation(REMOVE_BOOK);
 
-  // function that accepts the book's mongo _id value as param and deletes the book from the database
+  const userData = data?.me || {};
+
+  // create function that accepts the book's mongo _id value as param and deletes the book from the database
   const handleDeleteBook = async (bookId) => {
+    // get token
     const token = Auth.loggedIn() ? Auth.getToken() : null;
 
     if (!token) {
@@ -27,20 +30,17 @@ const SavedBooks = () => {
     }
 
     try {
-      const { user } = await removeBook({
-        variables: {
-          bookId: bookId,
-        },
+      const { data } = await removeBook({
+        variables: { bookId },
       });
 
-      userData = user;
+      // upon success, remove book's id from localStorage
       removeBookId(bookId);
     } catch (err) {
       console.error(err);
     }
   };
 
-  // if data isn't here yet, say so
   if (loading) {
     return <h2>LOADING...</h2>;
   }
@@ -49,7 +49,7 @@ const SavedBooks = () => {
     <>
       <Jumbotron fluid className="text-light bg-dark">
         <Container>
-          <h1>Viewing saved books!</h1>
+          <h1>Viewing {userData.username}'s books!</h1>
         </Container>
       </Jumbotron>
       <Container>
