@@ -1,25 +1,23 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Alert } from "react-bootstrap";
 
-// import appolo hook and add user mutation
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation } from "@apollo/client";
 import { ADD_USER } from "../utils/mutations";
 
 import Auth from "../utils/auth";
 
 const SignupForm = () => {
-  // set initial form state
+  // Set initial form state
   const [userFormData, setUserFormData] = useState({
     username: "",
     email: "",
     password: "",
   });
-  // set state for form validation
+  // Set state for form validation
   const [validated] = useState(false);
-  // set state for alert
+  // Set state for alert
   const [showAlert, setShowAlert] = useState(false);
 
-  // declared the addUser with the useMutation
   const [addUser, { error }] = useMutation(ADD_USER);
 
   useEffect(() => {
@@ -45,15 +43,14 @@ const SignupForm = () => {
       event.stopPropagation();
     }
 
-    // use addUser function
     try {
       const { data } = await addUser({
         variables: { ...userFormData },
       });
-
+      console.log(data);
       Auth.login(data.addUser.token);
-    } catch (e) {
-      console.error(e);
+    } catch (err) {
+      console.error(err);
     }
 
     setUserFormData({
@@ -67,7 +64,7 @@ const SignupForm = () => {
     <>
       {/* This is needed for the validation functionality above */}
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
-        {/* show alert if server response is bad */}
+        {/* Show alert if server response is bad */}
         <Alert
           dismissible
           onClose={() => setShowAlert(false)}
