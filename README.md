@@ -5,7 +5,7 @@ The app was built using the MERN stack, with a React front end, MongoDB database
 
 User Story:
 
-AS AN avid reader
+AS AN reader
 
 I WANT to search for new books to read
 
