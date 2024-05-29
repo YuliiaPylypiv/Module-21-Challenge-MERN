@@ -90,7 +90,7 @@ Change Heroku setting: "Config Vars",then KEY: "Git push", "git push heroku main
 
 App Screenshot:
 
-<img width="1280" alt="Screenshot 2024-05-22 at 1 39 45 PM" src="https://github.com/YuliiaPylypiv/Module-21-Challenge-MERN/assets/155758070/ab087498-cf08-4d7e-8056-0bf3528d2d9b">
+
 
 
 Deployed by HEROKU: https://book-searchh-engine.herokuapp.com/
